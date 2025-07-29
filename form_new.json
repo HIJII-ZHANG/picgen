@@ -1,0 +1,807 @@
+[
+  {
+    "bbox": [
+      [
+        550,
+        131
+      ],
+      [
+        550,
+        142
+      ],
+      [
+        620,
+        131
+      ],
+      [
+        620,
+        142
+      ]
+    ],
+    "transcription": "2030.1.1",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        550,
+        195
+      ],
+      [
+        550,
+        206
+      ],
+      [
+        620,
+        195
+      ],
+      [
+        620,
+        206
+      ]
+    ],
+    "transcription": "2028.1.1",
+    "style": "handwritten",
+    "font": "None"
+  },
+    {
+    "bbox": [
+      [
+        550,
+        152
+      ],
+      [
+        550,
+        163
+      ],
+      [
+        620,
+        152
+      ],
+      [
+        620,
+        163
+      ]
+    ],
+    "transcription": "中国",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        250,
+        92
+      ],
+      [
+        250,
+        103
+      ],
+      [
+        600,
+        92
+      ],
+      [
+        600,
+        103
+      ]
+    ],
+    "transcription": "科大讯飞有限公司",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        250,
+        111
+      ],
+      [
+        250,
+        122
+      ],
+      [
+        600,
+        111
+      ],
+      [
+        600,
+        122
+      ]
+    ],
+    "transcription": "iFLYTEK Co., Ltd.",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        248,
+        130
+      ],
+      [
+        248,
+        141
+      ],
+      [
+        348,
+        130
+      ],
+      [
+        348,
+        141
+      ]
+    ],
+    "transcription": "营业执照（注册证明）",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        236,
+        195
+      ],
+      [
+        236,
+        205
+      ],
+      [
+        400,
+        195
+      ],
+      [
+        400,
+        205
+      ]
+    ],
+    "transcription": "91340100712345678X",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        250,
+        172
+      ],
+      [
+        250,
+        185
+      ],
+      [
+        420,
+        172
+      ],
+      [
+        420,
+        185
+      ]
+    ],
+    "transcription": "刘庆峰",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        546,
+        173
+      ],
+      [
+        615,
+        185
+      ],
+      [
+        546,
+        173
+      ],
+      [
+        615,
+        185
+      ]
+    ],
+    "transcription": "居民身份证",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        250,
+        150
+      ],
+      [
+        250,
+        165
+      ],
+      [
+        351,
+        150
+      ],
+      [
+        351,
+        165
+      ]
+    ],
+    "transcription": "340111197001011234",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        233,
+        214
+      ],
+      [
+        233,
+        227
+      ],
+      [
+        278,
+        214
+      ],
+      [
+        278,
+        227
+      ]
+    ],
+    "transcription": "张三",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        455,
+        216
+      ],
+      [
+        455,
+        226
+      ],
+      [
+        554,
+        216
+      ],
+      [
+        554,
+        226
+      ]
+    ],
+    "transcription": "13800001234",
+    "style": "handwritten",
+    "font": "None"
+  },
+    {
+    "bbox": [
+      [
+        250,
+        236
+      ],
+      [
+        250,
+        247
+      ],
+      [
+        600,
+        236
+      ],
+      [
+        600,
+        247
+      ]
+    ],
+    "transcription": "科大讯飞有限公司",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        250,
+        253
+      ],
+      [
+        250,
+        265
+      ],
+      [
+        600,
+        253
+      ],
+      [
+        600,
+        265
+      ]
+    ],
+    "transcription": "iFLYTEK Co., Ltd.",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        430,
+        273
+      ],
+      [
+        430,
+        284
+      ],
+      [
+        600,
+        273
+      ],
+      [
+        600,
+        284
+      ]
+    ],
+    "transcription": "Time Deposit",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        264,
+        272
+      ],
+      [
+        414,
+        283
+      ],
+      [
+        264,
+        283
+      ],
+      [
+        414,
+        283
+      ]
+    ],
+    "transcription": "3010000000001234567",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        250,
+        412
+      ],
+      [
+        250,
+        423
+      ],
+      [
+        300,
+        412
+      ],
+      [
+        300,
+        423
+      ]
+    ],
+    "transcription": "定期存款",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        510,
+        393
+      ],
+      [
+        510,
+        404
+      ],
+      [
+        600,
+        393
+      ],
+      [
+        600,
+        404
+      ]
+    ],
+    "transcription": "3.00",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        375,
+        522
+      ],
+      [
+        457,
+        522
+      ],
+      [
+        375,
+        532
+      ],
+      [
+        457,
+        532
+      ]
+    ],
+    "transcription": "2026/07/01",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        162,
+        522
+      ],
+      [
+        239,
+        522
+      ],
+      [
+        162,
+        532
+      ],
+      [
+        239,
+        532
+      ]
+    ],
+    "transcription": "2025/07/01",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        170,
+        485
+      ],
+      [
+        170,
+        495
+      ],
+      [
+        200,
+        485
+      ],
+      [
+        200,
+        495
+      ]
+    ],
+    "transcription": "张三",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        310,
+        490
+      ],
+      [
+        310,
+        500
+      ],
+      [
+        360,
+        490
+      ],
+      [
+        360,
+        500
+      ]
+    ],
+    "transcription": "居民身份证",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        450,
+        490
+      ],
+      [
+        450,
+        500
+      ],
+      [
+        600,
+        490
+      ],
+      [
+        600,
+        500
+      ]
+    ],
+    "transcription": "340123200012120015",
+    "style": "handwritten",
+    "font": "None"
+  },
+{
+    "bbox": [
+      [
+        196,
+        508
+      ],
+      [
+        553,
+        517
+      ],
+      [
+        316,
+        508
+      ],
+      [
+        553,
+        517
+      ]
+    ],
+    "transcription": "17602886236",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        528,
+        853
+      ],
+      [
+        528,
+        865
+      ],
+      [
+        553,
+        853
+      ],
+      [
+        553,
+        865
+      ]
+    ],
+    "transcription": "2025",
+    "style": "handwritten",
+    "font": "None"
+  },
+    {
+    "bbox": [
+      [
+        571,
+        853
+      ],
+      [
+        571,
+        865
+      ],
+      [
+        581,
+        853
+      ],
+      [
+        581,
+        865
+      ]
+    ],
+    "transcription": "7",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        609,
+        853
+      ],
+      [
+        609,
+        865
+      ],
+      [
+        619,
+        853
+      ],
+      [
+        619,
+        865
+      ]
+    ],
+    "transcription": "28",
+    "style": "handwritten",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        503,
+        308
+      ],
+      [
+        581,
+        308
+      ],
+      [
+        503,
+        322
+      ],
+      [
+        581,
+        322
+      ]
+    ],
+    "transcription": "",
+    "style": "click",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        219,
+        288
+      ],
+      [
+        219,
+        304
+      ],
+      [
+        616,
+        288
+      ],
+      [
+        616,
+        304
+      ]
+    ],
+    "transcription": "",
+    "style": "click",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        231,
+        328
+      ],
+      [
+        231,
+        341
+      ],
+      [
+        319,
+        328
+      ],
+      [
+        319,
+        341
+      ]
+    ],
+    "transcription": "",
+    "style": "click",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        219,
+        345
+      ],
+      [
+        626,
+        345
+      ],
+      [
+        219,
+        375
+      ],
+      [
+        626,
+        375
+      ]
+    ],
+    "transcription": "",
+    "style": "click",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        245,
+        381
+      ],
+      [
+        312,
+        381
+      ],
+      [
+        245,
+        407
+      ],
+      [
+        312,
+        407
+      ]
+    ],
+    "transcription": "",
+    "style": "click",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        472,
+        413
+      ],
+      [
+        472,
+        427
+      ],
+      [
+        609,
+        413
+      ],
+      [
+        609,
+        427
+      ]
+    ],
+    "transcription": "",
+    "style": "click",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        218,
+        442
+      ],
+      [
+        268,
+        442
+      ],
+      [
+        218,
+        459
+      ],
+      [
+        268,
+        459
+      ]
+    ],
+    "transcription": "",
+    "style": "click",
+    "font": "None"
+  },
+  {
+    "bbox": [
+      [
+        338,
+        435
+      ],
+      [
+        338,
+        465
+      ],
+      [
+        636,
+        435
+      ],
+      [
+        636,
+        465
+      ]
+    ],
+    "transcription": "",
+    "style": "click",
+    "font": "None"
+  }
+]
