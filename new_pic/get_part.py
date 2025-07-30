@@ -33,9 +33,9 @@ class CheckboxClicker:
     ):
         self.llm_client = client(
             sys_prompt=sys_prompt,
-            user_prompt=user_prompt,
             model="qwen-vl-max-latest"
         )
+        self.user_prompt = user_prompt
         self.tick_size = tick_size
         self.tick_width = tick_width
 
@@ -127,7 +127,7 @@ class CheckboxClicker:
     def _infer_bbox_on_crop(self, crop: Image.Image) -> Rect:
         """对裁剪图调用模型并解析 bbox（裁剪图坐标）。带简单重试。"""
         data_url = self._encode_img_to_data_url(crop, fmt="JPEG")
-        rsp = self.llm_client.chat_completion(image=data_url)
+        rsp = self.llm_client.chat_completion(image=data_url, user_prompt=self.user_prompt)
         return self._parse_bbox_from_text(rsp)
 
     # -------------------- Helpers (static/instance) -------------------- #

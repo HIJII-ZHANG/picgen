@@ -9,23 +9,22 @@ from typing import Optional
 class client:
 
     def __init__(self, 
-                 sys_prompt: str, 
-                 user_prompt: str, 
+                 sys_prompt: str,  
                  temperature: float = 0.0, 
                  max_retries: int = 2,
                  retry_delay: float = 0.8,
                  model: str = "qwen-vl-max-latest"):
         self.sys_prompt = sys_prompt
-        self.user_prompt = user_prompt
         self.temperature = temperature
         self.model = model
+        self.retry_delay = retry_delay
         self.max_retries = max_retries
         self.client = OpenAI(
-            api_key="sk-dd8bea4152e2439daf4eae33234cc929",
-            base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+            api_key="sk-dd8bea4152e2439daf4eae33234cc929", # 大模型api key 调用
+            base_url="https://dashscope.aliyuncs.com/compatible-mode/v1" # 大模型api 兼容url
         )
 
-    def chat_completion(self, image: None | str = None):
+    def chat_completion(self, image: None | str = None, user_prompt: str = "") -> str:
         if self._is_valid_path(image):
             with open(image, "rb") as f:
                 b64 = base64.b64encode(f.read()).decode("utf-8")
@@ -34,20 +33,20 @@ class client:
                         {
                             "role": "user",
                             "content": [
-                                {"type": "text", "text": self.user_prompt},
+                                {"type": "text", "text": user_prompt},
                                 {"type": "image_url", 
                                  "image_url": {"url": f"data:image/jpeg;base64,{b64}"}},
                             ],
                         },
                     ]
-        elif self._is_base64_data_uri(image):
+        elif image is not None and self._is_base64_data_uri(image):
             # 处理 base64 数据 URI
             messages = [
                     {"role": "system", "content": self.sys_prompt},
                     {
                         "role": "user",
                         "content": [
-                            {"type": "text", "text": self.user_prompt},
+                            {"type": "text", "text": user_prompt},
                             {"type": "image_url", 
                              "image_url": {"url": f"{image}"}},
                         ],
@@ -56,7 +55,7 @@ class client:
         else:
             messages = [
                 {"role": "system", "content": self.sys_prompt},
-                {"role": "user", "content": self.user_prompt}
+                {"role": "user", "content": user_prompt}
             ]
         last_err: Optional[Exception] = None
         for attempt in range(self.max_retries + 1):

@@ -90,7 +90,7 @@ class HandwrittenBoxFiller:
             ty = iy1 + (iy2 - iy1 - th) // 2
 
             draw.text((tx, ty), text, fill=self.text_color, font=font)
-            print("drawn:", text, "at", (tx, ty), "with font size", font.size)
+            print("drawn:", text, "at", (int(tx), int(ty)), "with font size", font.size)
 
         img.save(out_path, quality=95)
 

@@ -20,7 +20,10 @@
     ],
     "transcription": "2030.1.1",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "2035.1.1",
+      "2040.1.1"
+    ]
   },
   {
     "bbox": [
@@ -43,9 +46,12 @@
     ],
     "transcription": "2028.1.1",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "2033.1.1",
+      "2038.1.1"
+    ]
   },
-    {
+  {
     "bbox": [
       [
         550,
@@ -66,7 +72,10 @@
     ],
     "transcription": "中国",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "中国",
+      "中国"
+    ]
   },
   {
     "bbox": [
@@ -89,7 +98,10 @@
     ],
     "transcription": "科大讯飞有限公司",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "华为技术有限公司",
+      "腾讯控股有限公司"
+    ]
   },
   {
     "bbox": [
@@ -112,7 +124,10 @@
     ],
     "transcription": "iFLYTEK Co., Ltd.",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "Huawei Technologies Co., Ltd.",
+      "Tencent Holdings Limited"
+    ]
   },
   {
     "bbox": [
@@ -135,7 +150,10 @@
     ],
     "transcription": "营业执照（注册证明）",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "营业执照（注册证明）",
+      "营业执照（注册证明）"
+    ]
   },
   {
     "bbox": [
@@ -158,7 +176,10 @@
     ],
     "transcription": "91340100712345678X",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "91440300712345678X",
+      "91440300712345678Y"
+    ]
   },
   {
     "bbox": [
@@ -181,7 +202,10 @@
     ],
     "transcription": "刘庆峰",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "任正非",
+      "马化腾"
+    ]
   },
   {
     "bbox": [
@@ -204,7 +228,10 @@
     ],
     "transcription": "居民身份证",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "居民身份证",
+      "居民身份证"
+    ]
   },
   {
     "bbox": [
@@ -227,7 +254,10 @@
     ],
     "transcription": "340111197001011234",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "440301194410251234",
+      "440301197110291234"
+    ]
   },
   {
     "bbox": [
@@ -250,7 +280,10 @@
     ],
     "transcription": "张三",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "李四",
+      "王五"
+    ]
   },
   {
     "bbox": [
@@ -273,9 +306,12 @@
     ],
     "transcription": "13800001234",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "13900001234",
+      "13700001234"
+    ]
   },
-    {
+  {
     "bbox": [
       [
         250,
@@ -296,7 +332,10 @@
     ],
     "transcription": "科大讯飞有限公司",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "华为技术有限公司",
+      "腾讯控股有限公司"
+    ]
   },
   {
     "bbox": [
@@ -319,7 +358,10 @@
     ],
     "transcription": "iFLYTEK Co., Ltd.",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "Huawei Technologies Co., Ltd.",
+      "Tencent Holdings Limited"
+    ]
   },
   {
     "bbox": [
@@ -342,7 +384,10 @@
     ],
     "transcription": "Time Deposit",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "Time Deposit",
+      "Fixed Deposit"
+    ]
   },
   {
     "bbox": [
@@ -365,7 +410,10 @@
     ],
     "transcription": "3010000000001234567",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "3010000000002345678",
+      "3010000000003456789"
+    ]
   },
   {
     "bbox": [
@@ -388,7 +436,10 @@
     ],
     "transcription": "定期存款",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "定期存款",
+      "定期存款"
+    ]
   },
   {
     "bbox": [
@@ -411,7 +462,10 @@
     ],
     "transcription": "3.00",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "2.50",
+      "2.75"
+    ]
   },
   {
     "bbox": [
@@ -434,7 +488,10 @@
     ],
     "transcription": "2026/07/01",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "2030/07/01",
+      "2035/07/01"
+    ]
   },
   {
     "bbox": [
@@ -457,7 +514,10 @@
     ],
     "transcription": "2025/07/01",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "2029/07/01",
+      "2034/07/01"
+    ]
   },
   {
     "bbox": [
@@ -480,7 +540,10 @@
     ],
     "transcription": "张三",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "李四",
+      "王五"
+    ]
   },
   {
     "bbox": [
@@ -503,7 +566,10 @@
     ],
     "transcription": "居民身份证",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "居民身份证",
+      "居民身份证"
+    ]
   },
   {
     "bbox": [
@@ -526,9 +592,12 @@
     ],
     "transcription": "340123200012120015",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "440302198001011234",
+      "440303198502141234"
+    ]
   },
-{
+  {
     "bbox": [
       [
         196,
@@ -549,7 +618,10 @@
     ],
     "transcription": "17602886236",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "17702886236",
+      "17802886236"
+    ]
   },
   {
     "bbox": [
@@ -572,9 +644,12 @@
     ],
     "transcription": "2025",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "2029",
+      "2034"
+    ]
   },
-    {
+  {
     "bbox": [
       [
         571,
@@ -595,7 +670,10 @@
     ],
     "transcription": "7",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "7",
+      "7"
+    ]
   },
   {
     "bbox": [
@@ -618,7 +696,10 @@
     ],
     "transcription": "28",
     "style": "handwritten",
-    "font": "None"
+    "optional": [
+      "1",
+      "1"
+    ]
   },
   {
     "bbox": [
@@ -640,8 +721,7 @@
       ]
     ],
     "transcription": "",
-    "style": "click",
-    "font": "None"
+    "style": "click"
   },
   {
     "bbox": [
@@ -663,8 +743,7 @@
       ]
     ],
     "transcription": "",
-    "style": "click",
-    "font": "None"
+    "style": "click"
   },
   {
     "bbox": [
@@ -686,8 +765,7 @@
       ]
     ],
     "transcription": "",
-    "style": "click",
-    "font": "None"
+    "style": "click"
   },
   {
     "bbox": [
@@ -709,8 +787,7 @@
       ]
     ],
     "transcription": "",
-    "style": "click",
-    "font": "None"
+    "style": "click"
   },
   {
     "bbox": [
@@ -732,8 +809,7 @@
       ]
     ],
     "transcription": "",
-    "style": "click",
-    "font": "None"
+    "style": "click"
   },
   {
     "bbox": [
@@ -755,8 +831,7 @@
       ]
     ],
     "transcription": "",
-    "style": "click",
-    "font": "None"
+    "style": "click"
   },
   {
     "bbox": [
@@ -778,8 +853,7 @@
       ]
     ],
     "transcription": "",
-    "style": "click",
-    "font": "None"
+    "style": "click"
   },
   {
     "bbox": [
@@ -801,7 +875,6 @@
       ]
     ],
     "transcription": "",
-    "style": "click",
-    "font": "None"
+    "style": "click"
   }
 ]
