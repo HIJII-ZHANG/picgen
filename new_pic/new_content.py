@@ -5,7 +5,7 @@ import ast
 import re
 import textwrap
 
-class content_processer:
+class content_processor:
     def __init__(self, json_path: str | Path, pic_path: str | Path):
         self.json_path = json_path
         self.pic_path = pic_path
