@@ -11,3 +11,4 @@ wheels/
 augraphy_cache/
 mmocr/
 *.jpg
+.jsonl

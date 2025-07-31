@@ -83,45 +83,104 @@ class CheckboxClicker:
         print(f"saved => {out_image}")
         return results
 
+# ====== 新增 & 修改部分（放在类里；其余 helper 保持不变）====== #
+    def _get_center(self, rect: Rect) -> Tuple[int, int]:
+        x1, y1, x2, y2 = rect
+        return (x1 + x2) // 2, (y1 + y2) // 2
+
+    def _within_thresh(self, dx: int, dy: int, thresh: int = 3) -> bool:
+        return abs(dx) <= thresh and abs(dy) <= thresh
+
+    def _query_delta_on_crop(
+        self,
+        crop: Image.Image,
+        cx: int,
+        cy: int,
+        *,
+        thresh: int = 3,
+    ) -> Tuple[int, int]:
+        """
+        让模型告诉我们 (当前勾中心) 与 (最近方框中心) 的 dx,dy。
+        返回整数像素差值 (dx, dy)。
+        """
+        data_url = self._encode_img_to_data_url(crop, fmt="JPEG")
+        sys_prompt = (
+            f"当前图像尺寸 {crop.size[0]}x{crop.size[1]}。"
+            f"已在 ({cx}, {cy}) 处打勾。请找离该点最近的方框中心，"
+            f"并返回 JSON {{\"dx\": Δx, \"dy\": Δy}} 表示最近方框中心 - 勾中心。以左上角为原点"
+            f"不要输出其他内容。"
+        )
+
+        accurate_client = client(
+            sys_prompt=sys_prompt,
+            model="qwen-vl-max-latest",
+        )
+
+        text = accurate_client.chat_completion(image=data_url)
+        try:
+            obj = json.loads(re.search(r"\{.*\}", text, flags=re.S).group(0))
+            return int(obj.get("dx", 0)), int(obj.get("dy", 0))
+        except Exception:
+            # 解析失败就返回大差值，逼迫继续循环
+            return thresh * 2, thresh * 2
+
+# ------------------------- 重写 tick_region ------------------------- #
     def tick_region(
         self,
         img: Image.Image,
-        region_rect: Rect,           # 整图坐标
+        region_rect: Rect,
         *,
         margin_inner: int = 0,
+        max_iter: int = 10,          # 最多修正 7 次
+        thresh_px: int = 1,        # 允许中心差阈值
     ) -> Tuple[Rect, Image.Image]:
         """
-        对一块区域执行：裁剪 → 调模型拿 bbox → 在裁剪图画勾 → 贴回整图。
-        返回 (global_bbox, modified_img)。
+        裁剪 → 模型给 bbox → 询问 dx,dy → 调整 → 满足阈值后画勾 → 贴回整图
         """
         W, H = img.size
-        gx1, gy1, gx2, gy2 = self._clamp_rect(region_rect, W, H, margin=0)
+        gx1, gy1, gx2, gy2 = self._clamp_rect(region_rect, W, H)
         crop = img.crop((gx1, gy1, gx2, gy2))
         cw, ch = crop.size
 
-        # 调模型（以裁剪图为坐标系）
+        # 1) 首次让模型给 bbox
         rect_local = self._infer_bbox_on_crop(crop)
 
-        # 约束 + 内扩
+        for attempt in range(max_iter + 1):
+            cx, cy = self._get_center(rect_local)
+
+            dx, dy = self._query_delta_on_crop(crop, cx, cy, thresh=thresh_px)
+
+            print(dx,dy)
+
+            if self._within_thresh(dx, dy, thresh_px):
+                break  # 已在框中心附近
+            # 否则整体平移 bbox，并继续循环
+            rect_local = (
+                max(0, min(cw - 1, rect_local[0] + dx)),
+                max(0, min(ch - 1, rect_local[1] + dy)),
+                max(0, min(cw,     rect_local[2] + dx)),
+                max(0, min(ch,     rect_local[3] + dy)),
+            )
+
+        # 2) 最终 bbox 内外扩 & 画勾
         bx1, by1, bx2, by2 = rect_local
         bx1 = max(0, min(cw - 1, bx1 - margin_inner))
         by1 = max(0, min(ch - 1, by1 - margin_inner))
         bx2 = max(0, min(cw,     bx2 + margin_inner))
         by2 = max(0, min(ch,     by2 + margin_inner))
-        if bx2 <= bx1: bx2 = min(cw, bx1 + 1)
-        if by2 <= by1: by2 = min(ch, by1 + 1)
         rect_local = (bx1, by1, bx2, by2)
 
-        # 画对号
         draw = ImageDraw.Draw(crop)
         self._draw_tick(draw, rect_local, self.tick_size, self.tick_width)
 
-        # 贴回
+        # 3) 贴回整图
         img.paste(crop, (gx1, gy1))
 
-        # 换算为整图
+        # 4) 返回换算后的整图坐标
         global_bbox = (gx1 + bx1, gy1 + by1, gx1 + bx2, gy1 + by2)
         return global_bbox, img
+
+        
 
     # -------------------- Core LLM call -------------------- #
     def _infer_bbox_on_crop(self, crop: Image.Image) -> Rect:
