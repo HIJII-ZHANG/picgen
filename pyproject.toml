@@ -17,6 +17,7 @@ dependencies = [
     "ppocrlabel>=3.1.2",
     "torch>=2.7.1",
     "torchvision>=0.22.1",
+    "ultralytics>=8.3.171",
 ]
 
 [tool.uv.sources]

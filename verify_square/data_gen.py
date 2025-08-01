@@ -121,6 +121,16 @@ def gen_one(cfg):
     return img, boxes
 
 
+def del_old_files(out_dir: Path):
+    if out_dir.is_dir():
+        for f in out_dir.glob("**/*"):
+            if f.is_file():
+                f.unlink()
+            elif f.is_dir() and f.name != "images":
+                f.rmdir()  # remove empty subdirs
+    else:
+        out_dir.mkdir(parents=True, exist_ok=True)
+
 def main():
     p = argparse.ArgumentParser("doc-style rectangle dataset generator with text")
     p.add_argument("--out", type=Path, default="data_doc")
@@ -142,6 +152,8 @@ def main():
     img_dir = cfg.out / "images"
     img_dir.mkdir(parents=True, exist_ok=True)
     anno_path = cfg.out / "dataset.jsonl"
+
+    del_old_files(cfg.out)
 
     with anno_path.open("w", encoding="utf-8") as f:
         for i in range(1, cfg.num + 1):

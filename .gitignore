@@ -1,14 +1,12 @@
-# Python-generated files
+
 __pycache__/
 *.py[oc]
 build/
 dist/
 wheels/
 *.egg-info
-
-# Virtual environments
+models/
 .venv
 augraphy_cache/
-mmocr/
 *.jpg
 .jsonl

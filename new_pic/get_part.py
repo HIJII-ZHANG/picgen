@@ -6,6 +6,8 @@ from openai import OpenAI
 import os, io, json, re, base64
 from data_phrase.call import client
 import noise
+from verify_square.infer import BoxDetector, BoxDetector_detector
+import numpy
 
 Rect = Tuple[int, int, int, int]
 
@@ -38,6 +40,12 @@ class CheckboxClicker:
         self.user_prompt = user_prompt
         self.tick_size = tick_size
         self.tick_width = tick_width
+        self.detector_1 = BoxDetector_detector(
+            model_path=Path(__file__).parent.parent / "models" / "detector-model.pt"
+        )
+        self.detector_2 = BoxDetector(
+            model_path=Path(__file__).parent.parent / "models" / "best_boxdet.pth",
+        )
 
     # -------------------- Public APIs -------------------- #
     def tick_from_json_click(
@@ -45,6 +53,7 @@ class CheckboxClicker:
         image_path: str,
         json_path: str,
         out_image: str,
+        agent: str = "local",  # 使用本地模型
         *,
         style_filter: str = "click",
         margin_outer: int = 0,
@@ -70,6 +79,7 @@ class CheckboxClicker:
             try:
                 gbox, img = self.tick_region(
                     img=img,
+                    agent=agent,
                     region_rect=region,
                     margin_inner=margin_inner,
                 )
@@ -83,7 +93,7 @@ class CheckboxClicker:
         print(f"saved => {out_image}")
         return results
 
-# ====== 新增 & 修改部分（放在类里；其余 helper 保持不变）====== #
+
     def _get_center(self, rect: Rect) -> Tuple[int, int]:
         x1, y1, x2, y2 = rect
         return (x1 + x2) // 2, (y1 + y2) // 2
@@ -124,11 +134,12 @@ class CheckboxClicker:
             # 解析失败就返回大差值，逼迫继续循环
             return thresh * 2, thresh * 2
 
-# ------------------------- 重写 tick_region ------------------------- #
+
     def tick_region(
         self,
         img: Image.Image,
         region_rect: Rect,
+        agent: str = "local",
         *,
         margin_inner: int = 0,
         max_iter: int = 10,          # 最多修正 7 次
@@ -142,25 +153,32 @@ class CheckboxClicker:
         crop = img.crop((gx1, gy1, gx2, gy2))
         cw, ch = crop.size
 
-        # 1) 首次让模型给 bbox
-        rect_local = self._infer_bbox_on_crop(crop)
+        if agent == "local":
+            try:
+                rect_local = self._infer_bbox_on_crop_(crop)
+            except Exception as e:
+                print(f"Local model failed: {e}")
+                rect_local = self._infer_bbox_on_crop(crop)
 
-        for attempt in range(max_iter + 1):
-            cx, cy = self._get_center(rect_local)
+        else:
+            rect_local = self._infer_bbox_on_crop(crop)
 
-            dx, dy = self._query_delta_on_crop(crop, cx, cy, thresh=thresh_px)
+            for attempt in range(max_iter + 1):
+                cx, cy = self._get_center(rect_local)
 
-            print(dx,dy)
+                dx, dy = self._query_delta_on_crop(crop, cx, cy, thresh=thresh_px)
 
-            if self._within_thresh(dx, dy, thresh_px):
-                break  # 已在框中心附近
-            # 否则整体平移 bbox，并继续循环
-            rect_local = (
-                max(0, min(cw - 1, rect_local[0] + dx)),
-                max(0, min(ch - 1, rect_local[1] + dy)),
-                max(0, min(cw,     rect_local[2] + dx)),
-                max(0, min(ch,     rect_local[3] + dy)),
-            )
+                print(dx,dy)
+
+                if self._within_thresh(dx, dy, thresh_px):
+                    break  # 已在框中心附近
+                # 否则整体平移 bbox，并继续循环
+                rect_local = (
+                    max(0, min(cw - 1, rect_local[0] + dx)),
+                    max(0, min(ch - 1, rect_local[1] + dy)),
+                    max(0, min(cw,     rect_local[2] + dx)),
+                    max(0, min(ch,     rect_local[3] + dy)),
+                )
 
         # 2) 最终 bbox 内外扩 & 画勾
         bx1, by1, bx2, by2 = rect_local
@@ -182,12 +200,24 @@ class CheckboxClicker:
 
         
 
-    # -------------------- Core LLM call -------------------- #
     def _infer_bbox_on_crop(self, crop: Image.Image) -> Rect:
         """对裁剪图调用模型并解析 bbox（裁剪图坐标）。带简单重试。"""
         data_url = self._encode_img_to_data_url(crop, fmt="JPEG")
         rsp = self.llm_client.chat_completion(image=data_url, user_prompt=self.user_prompt)
         return self._parse_bbox_from_text(rsp)
+    
+
+    def _infer_bbox_on_crop_(self, crop: Image.Image) -> Rect:
+        """对裁剪图调用模型并解析 bbox（裁剪图坐标）。带简单重试。"""
+        rsp = self.detector_2.predict(crop)
+        if not rsp[0].size(0):
+            rsp = self.detector_1.predict(crop)
+        if not rsp[0].size(0):
+            raise ValueError("模型未检测到方框")
+        bbox = rsp[0][0].tolist()  # 取第一个方框
+        return self._norm_bbox(bbox)
+
+        
 
     # -------------------- Helpers (static/instance) -------------------- #
     @staticmethod
