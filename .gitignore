@@ -10,3 +10,4 @@ models/
 augraphy_cache/
 *.jpg
 .jsonl
+.env

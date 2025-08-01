@@ -20,7 +20,7 @@ class client:
         self.retry_delay = retry_delay
         self.max_retries = max_retries
         self.client = OpenAI(
-            api_key="sk-dd8bea4152e2439daf4eae33234cc929", # 大模型api key 调用
+            api_key=os.getenv("API_KEY"), # 大模型api key 调用
             base_url="https://dashscope.aliyuncs.com/compatible-mode/v1" # 大模型api 兼容url
         )
 
