@@ -53,3 +53,38 @@ uv run verify_square/trainer.py --train data_doc/train.jsonl --val data_doc/val.
 使用 vl 模型，准确率很低。
 
 在代码中为上述三种方式依次尝试，第 3 种方式可以保证有输出。
+
+## 生成新预选文字
+
+采用vl大模型，特别注意需要将表单和所有json文字内容一并传入，否则生成效果会显著降低。
+
+## json格式
+
+```json
+ {
+    "bbox": [ //框选区四点坐标，顺序不重要
+      [
+        550,
+        131
+      ],
+      [
+        550,
+        142
+      ],
+      [
+        620,
+        131
+      ],
+      [
+        620,
+        142
+      ]
+    ],
+    "transcription": "2030.1.1", //当前文字内容，若style=click 可为空或删除
+    "style": "handwritten", //handwritten:文字内容, click:打勾内容
+    "optional": [ //待替换文字内容，为加速可做cache设计，若style=click 可为空或删除
+      "2035.1.1",
+      "2040.1.1"
+    ]
+ }
+```
