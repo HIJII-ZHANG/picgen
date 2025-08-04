@@ -134,7 +134,7 @@ def main():
     val_ds,
     batch_size=args.batch,
     shuffle=False,
-    collate_fn=collate_fn,   # 一定要显式写 key
+    collate_fn=collate_fn,
     num_workers=0,
     pin_memory=True,
 )

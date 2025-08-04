@@ -12,7 +12,7 @@ def main():
     clicker = get_part.CheckboxClicker()
     clicker.tick_from_json_click(pic_path, json_path, click_path)
     filler = new_pic_data.HandwrittenBoxFiller(
-        font_path="./ttf/SimSun.otf",
+        font_path="./ttf/手书体.ttf",
         align="left",
     )
     filler.process(
@@ -25,7 +25,7 @@ def main():
     #content_processor.new_content_vl(num=1)
     #content_processor.optional_to_handwritten()
     #content_processor.flush_optional()
-    
+
     print(f"Saved: {save_path}")
 
 
